@@ -49,3 +49,12 @@ export function joinReact(array: any[], separator: ReactNode) {
     // return and add key props
     return <>{joinedElements.map((element, index) => React.cloneElement(element as ReactElement, { key: index }))}</>;
 };
+
+/**
+ * Joins the elements of an array into a ReactNode
+ * @param param0 The array to join and the separator to be inserted between each element
+ * @returns A ReactNode containing the elements of the array
+ */
+export function JoinReact({ array, separator }: { array: any[], separator: ReactNode }) {
+    return joinReact(array, separator);
+}
