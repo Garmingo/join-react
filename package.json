@@ -5,7 +5,7 @@
   "main": "src/index.tsx",
   "type": "module",
   "scripts": {
-    "test": "jest"
+    "test": "jest --config jest.config.ts"
   },
   "repository": {
     "type": "git",
