@@ -3,34 +3,30 @@
  *   All rights reserved.
  *   Unauthorized use, reproduction, and distribution of this source code is strictly prohibited.
  */
-import React, { ReactNode } from 'react';
+import React, { ReactElement, ReactNode } from 'react';
 
-declare global {
-    interface Array<T> {
-        /**
-         * Joins the elements of an array into a ReactNode
-         * @param separator The separator to be inserted between each element
-         * @returns A ReactNode containing the elements of the array
-         */
-        joinReact: (separator: ReactNode) => ReactNode;
-    }
-}
 
-Array.prototype.joinReact = function (separator: ReactNode) {
+/**
+ * Joins the elements of an array into a ReactNode
+ * @param array The array to join
+ * @param separator The separator to be inserted between each element
+ * @returns A ReactNode containing the elements of the array
+ */
+export function joinReact(array: any[], separator: ReactNode) {
     const joinedElements: ReactNode[] = [];
 
-    if (this.length === 0) {
+    if (array.length === 0) {
         // No elements, so just return empty node
         return <></>;
     }
 
-    if (this.length === 1) {
+    if (array.length === 1) {
         // Only one element, so just return it
-        return React.isValidElement(this[0]) ? this[0] : <>{this[0]}</>;
+        return React.isValidElement(array[0]) ? array[0] : <>{array[0]}</>;
     }
 
 
-    this.forEach((child, index) => {
+    array.forEach((child, index) => {
         // Check if the child is a React element or not
         // If not, wrap it in a fragment
         if (React.isValidElement(child)) {
@@ -44,14 +40,12 @@ Array.prototype.joinReact = function (separator: ReactNode) {
             return;
         }
 
-        if (index < this.length - 1) {
+        if (index < array.length - 1) {
             // Add the separator component between elements
             joinedElements.push(separator);
         }
     });
 
-    return <>{joinedElements}</>;
+    // return and add key props
+    return <>{joinedElements.map((element, index) => React.cloneElement(element as ReactElement, { key: index }))}</>;
 };
-
-// Export the joinReact extension to be used as a separate function
-export const joinReact = Array.prototype.joinReact;
