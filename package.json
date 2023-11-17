@@ -1,6 +1,6 @@
 {
   "name": "@garmingo/join-react",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Extends the Array prototype to allow joining react elements similar to strings",
   "main": "src/index.tsx",
   "type": "module",
