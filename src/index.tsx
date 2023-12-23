@@ -58,3 +58,19 @@ export function joinReact(array: any[], separator: ReactNode) {
 export function JoinReact({ array, separator }: { array: any[], separator: ReactNode }) {
     return joinReact(array, separator);
 }
+
+declare global {
+    interface Array<T> {
+        /**
+         * Joins the elements of an array into a ReactNode
+         * @param separator The separator to be inserted between each element
+         * @returns A ReactNode containing the elements of the array
+         */
+        joinReact: (separator: ReactNode) => ReactNode;
+    }
+}
+
+// Export the joinReact extension to be used as a separate function
+Array.prototype.joinReact = function (separator: ReactNode) {
+    return joinReact(this, separator);
+}
