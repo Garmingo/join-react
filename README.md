@@ -9,7 +9,7 @@ npm install @garmingo/join-react
 ## Usage
 joinReact can be used by either importing the module or by importing the prototype extension directly.
 
-### Importing the module
+### Importing the function
 ```typescript
 import { joinReact } from '@garmingo/join-react';
 
@@ -22,6 +22,19 @@ const elements = [
 const joinedElements = joinReact(elements, <div>Separator</div>);
 ```
 
+### Importing the Component
+```typescript
+import { JoinReact } from '@garmingo/join-react';
+
+const elements = [
+    <div>1</div>,
+    <div>2</div>,
+    <div>3</div>,
+];
+
+<JoinReact elements={elements} separator={<div>Separator</div>} />
+```
+
 ### Importing the prototype extension
 ```typescript
 import '@garmingo/join-react';
@@ -32,7 +45,7 @@ const elements = [
     <div>3</div>,
 ];
 
-const joinedElements = elements.join(<div>Separator</div>);
+const joinedElements = elements.joinReact(<div>Separator</div>);
 ```
 
 Now `joinedElements` will be a react element containing the following:
