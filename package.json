@@ -1,6 +1,6 @@
 {
   "name": "@garmingo/join-react",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Allow joining react elements similar to strings",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
